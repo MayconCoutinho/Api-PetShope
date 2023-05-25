@@ -8,6 +8,7 @@ import { IdGenerator } from "../services/IdGenerator"
 import { RGBGenerator } from "../services/RGBGenarator"
 import { CheckingUserData } from "../services/CheckingUserData"
 import { GetInfoUser } from "../services/GetInfoUser"
+import { PrismaClient } from "@prisma/client"
 
 export const userRouter = Router()
 
@@ -18,7 +19,7 @@ const usersController = new UsersController(
 		new IdGenerator(),
 		new HashManager(),
 		new Authenticator(),
-		new CheckingUserData(),
+		new CheckingUserData(new PrismaClient(), new HashManager()),
 		new GetInfoUser()
 	)
 )

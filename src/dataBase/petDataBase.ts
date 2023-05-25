@@ -1,1 +1,5 @@
-export class PetDataBase {}
+export class PetDataBase {
+	constructor() {}
+
+	public registerPet = async () => {}
+}

@@ -19,7 +19,7 @@ model UserAdmin {
 }
 
 model Cliente {
-    id       String @id @default(uuid())
+    id       String @id
     nome     String
     telefone String
     pets     Pet[]

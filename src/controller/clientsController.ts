@@ -1,30 +1,22 @@
 import { ClientBusiness } from "../business/clientsBusiness"
 import { BaseError } from "../errors/BaseError"
-import { InputClientAndPet } from "../models/client"
 import { Request, Response } from "express"
+import { ClientInput } from "../models/client"
 
 export class ClientsController {
-	constructor(clientBusiness: ClientBusiness) {}
+	constructor(private clientBusiness: ClientBusiness) {}
 
 	public clients = async () => {}
 
 	public register = async (req: Request, res: Response) => {
 		try {
-			const input: InputClientAndPet = {
-				client: {
-					nome: req.body.nome,
-					telefone: req.body.telefone,
-				},
-				pet: {
-					idade: req.body.idade,
-					nome: req.body.nome,
-					raca: req.body.raca,
-					tipo: req.body.tipo,
-				},
+			const input: ClientInput = {
+				nome: req.body.nome,
+				telefone: req.body.telefone,
 			}
-			// const response = await this
+			const response = await this.clientBusiness.register(input)
 
-			res.status(200).send(input)
+			res.status(200).send(response)
 		} catch (error) {
 			console.log(error)
 			if (error instanceof BaseError) {

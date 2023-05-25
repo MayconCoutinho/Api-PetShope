@@ -1,32 +1,24 @@
-export interface InputClientAndPet {
-	client: Cliente
-	pet: Pet
-}
-
-export interface Cliente {
+export interface ClientInput {
 	nome: string
 	telefone: string
 }
-
-export interface Pet {
+export interface PetInput {
 	nome: string
 	idade: number
 	tipo: "gato" | "cachorro"
 	raca: string
 }
-
 export interface ClienteDB {
 	id: string
 	nome: string
 	telefone: string
-	pets: Pet[]
+	pets?: PetDB[]
 }
-
 export interface PetDB {
 	id: string
 	nome: string
 	idade: number
 	tipo: "gato" | "cachorro"
 	raca: string
-	dono: Cliente
+	dono: ClienteDB
 }
