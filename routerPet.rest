@@ -1,0 +1,16 @@
+### Registra cliente e pet
+POST http://localhost:3003/admin/client/register
+Content-Type: application/json
+
+{
+  "client": {
+    "nome": "joão",
+    "telefone": "28999287132"
+  },
+  "pet": {
+    "idade": 10,
+    "nome": "frede",
+    "raca": "pug",
+    "tipo": "cachorro"
+  }
+}

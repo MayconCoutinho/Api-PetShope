@@ -4,7 +4,7 @@ import { Authenticator } from "./Authenticator"
 import { PrismaClient } from "@prisma/client"
 
 export class CheckingUserData {
-	// constructor(hashManager: HashManager) {}
+	constructor(private prismaClient: PrismaClient, private hashManager: HashManager) {}
 
 	private GetInfoUser = async (
 		email: string,
@@ -12,17 +12,14 @@ export class CheckingUserData {
 	): Promise<{ id: string } | undefined> => {
 		await this.CheckiIsEmailNotAlreadyExists(email)
 
-		const prisma = new PrismaClient()
-		const decrypt = new HashManager()
-
-		const resultData = await prisma.userAdmin.findFirst({
+		const resultData = await this.prismaClient.userAdmin.findFirst({
 			where: { email },
 		})
 
 		const passwordHash = resultData?.password
 
 		if (passwordHash) {
-			const decryptResult = await decrypt.compare(password, passwordHash)
+			const decryptResult = await this.hashManager.compare(password, passwordHash)
 
 			if (!decryptResult) {
 				throw new ParamsError("A senha esta errada!")
@@ -57,9 +54,7 @@ export class CheckingUserData {
 	}
 
 	public CheckiIsEmailAlreadyExists = async (email: string): Promise<void> => {
-		const prisma = new PrismaClient()
-
-		const IsEmail = await prisma.userAdmin.findFirst({
+		const IsEmail = await this.prismaClient.userAdmin.findFirst({
 			where: { email },
 		})
 
@@ -69,9 +64,7 @@ export class CheckingUserData {
 	}
 
 	public CheckiIsEmailNotAlreadyExists = async (email: string): Promise<void> => {
-		const prisma = new PrismaClient()
-
-		const IsEmail = await prisma.userAdmin.findFirst({
+		const IsEmail = await this.prismaClient.userAdmin.findFirst({
 			where: { email },
 		})
 
@@ -83,9 +76,7 @@ export class CheckingUserData {
 		this.CheckinEmail(email)
 		this.CheckiPassword(password)
 
-		const prisma = new PrismaClient()
-
-		const IsEmail = await prisma.userAdmin.findFirst({
+		const IsEmail = await this.prismaClient.userAdmin.findFirst({
 			where: { email },
 		})
 		return !!IsEmail
