@@ -1,0 +1,41 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgres"
+    url      = env("DATABASE_URL")
+}
+
+model UserAdmin {
+    id        String @id @default(uuid())
+    email     String
+    name      String
+    imgPerfil String
+    rgb       String
+    password  String
+
+    @@map("user_admin")
+}
+
+model Cliente {
+    id       String @id @default(uuid())
+    nome     String
+    telefone String
+    pets     Pet[]
+}
+
+model Pet {
+    id     String  @id @default(uuid())
+    nome   String
+    idade  Int
+    tipo   TipoPet
+    raca   String
+    dono   Cliente @relation(fields: [donoId], references: [id])
+    donoId String
+}
+
+enum TipoPet {
+    GATO
+    CACHORRO
+}
