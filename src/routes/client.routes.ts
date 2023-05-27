@@ -5,6 +5,7 @@ import { ClientDataBase } from "../dataBase/clientDataBase"
 import { PrismaClient } from "@prisma/client"
 import { CheckingInputClient } from "../services/CheckingInputClient"
 import { IdGenerator } from "../services/IdGenerator"
+import { CheckingInputPet } from "../services/CheckingInputPet"
 
 const clientRouter = Router()
 
@@ -12,6 +13,7 @@ const clientController = new ClientsController(
 	new ClientBusiness(
 		new ClientDataBase(new PrismaClient()),
 		new CheckingInputClient(),
+		new CheckingInputPet(),
 		new IdGenerator()
 	)
 )

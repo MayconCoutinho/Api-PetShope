@@ -1,5 +1,5 @@
 import { ParamsError } from "../errors/ParamsError"
-import { ClientInput } from "../models/client"
+import { ClientInput } from "../models/clientAndPet"
 
 export class CheckingInputClient {
 	private ClientPhoneNumber = async (phone: string): Promise<void> => {

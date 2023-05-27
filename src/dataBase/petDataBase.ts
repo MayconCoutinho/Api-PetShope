@@ -1,5 +1,7 @@
 export class PetDataBase {
 	constructor() {}
 
-	public registerPet = async () => {}
+	public addPet = async () => {}
+
+	public deletePet = async () => {}
 }

@@ -1,3 +1,7 @@
+export interface ClientAndPetInput {
+	client: ClientInput
+	pet: PetInput
+}
 export interface ClientInput {
 	nome: string
 	telefone: string
@@ -5,7 +9,7 @@ export interface ClientInput {
 export interface PetInput {
 	nome: string
 	idade: number
-	tipo: "gato" | "cachorro"
+	tipo: "GATO" | "CACHORRO"
 	raca: string
 }
 export interface ClienteDB {
@@ -15,10 +19,9 @@ export interface ClienteDB {
 	pets?: PetDB[]
 }
 export interface PetDB {
-	id: string
 	nome: string
 	idade: number
-	tipo: "gato" | "cachorro"
+	tipo: "GATO" | "CACHORRO"
 	raca: string
 	dono: ClienteDB
 }
