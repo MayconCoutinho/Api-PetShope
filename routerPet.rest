@@ -1,16 +1,18 @@
-### Registra cliente e pet
-POST http://localhost:3003/admin/client/register
+# Mudando algum dado
+PATCH http://localhost:3003/admin/client/a04710f6-de3e-47bd-accb-7ff72027cab9/pet/1a03ee12-370c-4e3b-8154-2ddf0e2e68a0
 Content-Type: application/json
 
 {
-  "client": {
-    "nome": "joão",
-    "telefone": "28999287132"
-  },
-  "pet": {
-    "idade": 10,
-    "nome": "frede",
-    "raca": "pug",
-    "tipo": "cachorro"
-  }
+  "nome": "Tor"
+
+}
+
+
+### Deleta o Pet de um cliente
+DELETE  http://localhost:3003/admin/pet
+Content-Type: application/json
+
+{
+    "idClient": "b7bbca37-1737-4409-aa26-32a8ef65a111",
+    "idPet":  "e08ce6c2-f3d6-45c9-a0f2-b132bf26907c"
 }

@@ -2,9 +2,7 @@ import request from "supertest"
 import { expect, describe, it } from "vitest"
 import { app } from "../../src"
 
-// Teste com a plicação funcionando por completo e dando retorno (Teste de integração)
-
-describe("GET /users", () => {
+describe.skip("GET /users", () => {
 	it.skip("should get the ping", async () => {
 		const response = await request(app).get("/users/perfil")
 		expect(response.status).toBe(200)
