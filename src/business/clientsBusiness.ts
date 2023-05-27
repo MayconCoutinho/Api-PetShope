@@ -1,4 +1,5 @@
 import { ClientDataBase } from "../dataBase/clientDataBase"
+import { ParamsError } from "../errors/ParamsError"
 import { ClientAndPetInput, ClientInput, ClienteDB, PetDB } from "../models/clientAndPet"
 import { Ok } from "../models/menssage"
 import { CheckingInputClient } from "../services/CheckingInputClient"
@@ -12,6 +13,20 @@ export class ClientBusiness {
 		private checkingInputPet: CheckingInputPet,
 		private idGenerator: IdGenerator
 	) {}
+
+	public patchClient = async (clientId: string, dataToUpdate: any) => {
+		// Fazer a confirmação do token do administrador
+		if (!clientId) {
+			throw new ParamsError("Confira se colocou o id do cliente!")
+		}
+		if (!dataToUpdate) {
+			throw new ParamsError("Confira se colocou oque quer mudar!")
+		}
+
+		const response = await this.clientDataBase.patchClient(clientId, dataToUpdate)
+
+		return response
+	}
 
 	public clients = async () => {
 		// Fazer a confirmação do token do administrador
@@ -62,6 +77,17 @@ export class ClientBusiness {
 		}
 
 		const response = await this.clientDataBase.register(inputClientAndPetOK)
+		return response
+	}
+	public deleteClient = async (id: string) => {
+		// Fazer a confirmação do token do administrador
+
+		if (!id) {
+			throw new ParamsError("Confira se colocou o id do cliente!")
+		}
+
+		const response = await this.clientDataBase.deleteClient(id)
+
 		return response
 	}
 }

@@ -19,3 +19,21 @@ Content-Type: application/json
   }
 }
 
+### Mudando algum dado
+PATCH http://localhost:3003/admin/client/a04710f6-de3e-47bd-accb-7ff72027cab9
+Content-Type: application/json
+
+{
+  "telefone": "11999287132"
+  
+}
+
+
+### Deleta o usuario
+DELETE http://localhost:3003/admin/client
+Content-Type: application/json
+
+{
+    "id": "b7bbca37-1737-4409-aa26-32a8ef65a111"
+}
+

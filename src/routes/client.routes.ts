@@ -20,5 +20,7 @@ const clientController = new ClientsController(
 
 clientRouter.get("/clients", clientController.clients)
 clientRouter.post("/client/register", clientController.register)
+clientRouter.patch("/client/:clientId", clientController.patchClient)
+clientRouter.delete("/client", clientController.deleteClient)
 
 export default clientRouter
