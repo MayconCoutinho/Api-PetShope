@@ -248,7 +248,7 @@ http://localhost:3003/users/login
 > Caso tenha Git basta da git clone, caso não tenha basta clicar em code e depois dowloand zip e seguir os proximos passos
 
 ```BASH
-git clone https://github.com/MayconCoutinho/CRUD
+git clone https://github.com/MayconCoutinho/Api-PetShope
 ```
 
 <br /> 
