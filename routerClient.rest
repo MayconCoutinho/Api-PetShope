@@ -1,8 +1,21 @@
+### Pega todos os cliente e seus pets
+GET http://localhost:3003/admin/clients
+
+
 ### Registra cliente e pet
 POST http://localhost:3003/admin/client/register
 Content-Type: application/json
 
 {
-    "nome": "joão",
-    "telefone": "28999287132"  
+  "client": {
+    "nome": "cebola",
+    "telefone": "28999343577"
+  },
+  "pet": {
+    "idade": 5,
+    "nome": "cebolinha",
+    "raca": "vira-lata",
+    "tipo": "CACHORRO"
+  }
 }
+

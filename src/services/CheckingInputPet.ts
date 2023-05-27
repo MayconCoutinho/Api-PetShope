@@ -1,5 +1,5 @@
 import { ParamsError } from "../errors/ParamsError"
-import { PetInput } from "../models/client"
+import { PetInput } from "../models/clientAndPet"
 
 export class CheckingInputPet {
 	private petAge = async (age: number): Promise<void> => {
@@ -21,16 +21,16 @@ export class CheckingInputPet {
 		}
 	}
 	private petType = async (type: string): Promise<void> => {
-		const typeMod = type.toLocaleLowerCase()
+		const typeMod = type.toLocaleUpperCase()
 
 		if (!typeMod) {
 			throw new ParamsError("Confira se colocou o tipo do pet!")
 		}
-		if (!typeMod) {
-			throw new ParamsError("Confira se colocou a raça do pet!")
-		}
-		if (typeMod !== "cachorro" && typeMod !== "gato") {
-			throw new ParamsError("Só atendemos os pets do tipo gato e cachorro! confira a tipo")
+
+		if (typeMod !== "GATO" && typeMod !== "CACHORRO") {
+			throw new ParamsError(
+				`Só trabalhomos com 2 tipos de pet GATO e CACHORRO, confira o tipo do animal! e você colocou ${typeMod}`
+			)
 		}
 	}
 	private petName = async (name: string): Promise<void> => {
