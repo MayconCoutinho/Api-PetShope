@@ -6,6 +6,10 @@ export interface ClientInput {
 	nome: string
 	telefone: string
 }
+export interface ClientAndPetDB {
+	client: ClienteDB
+	pet: PetDB
+}
 export interface PetInput {
 	nome: string
 	idade: number
