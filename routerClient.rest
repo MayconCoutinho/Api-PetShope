@@ -20,11 +20,11 @@ Content-Type: application/json
 }
 
 ### Mudando algum dado
-PATCH http://localhost:3003/admin/client/a04710f6-de3e-47bd-accb-7ff72027cab9
+PATCH http://localhost:3003/admin/client/7542be8e-959f-47de-b2ed-e098c7316123
 Content-Type: application/json
 
 {
-  "telefone": "11999287132"
+  "telefone": "11999777132"
   
 }
 

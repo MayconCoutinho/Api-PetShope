@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client"
-import { ClientAndPetInput } from "../models/clientAndPet"
+import { ClientAndPetDB, ClientAndPetInput } from "../models/clientAndPet"
 import { Ok } from "../models/menssage"
 import { NotFoundError } from "../errors/NotFoundError"
 
@@ -35,12 +35,13 @@ export class ClientDataBase {
 		return response
 	}
 
-	public register = async (inputChecked: ClientAndPetInput) => {
+	public register = async (inputChecked: ClientAndPetDB) => {
 		const client = inputChecked.client
 		const pet = inputChecked.pet
 
 		await this.prismaClient.cliente.create({
 			data: {
+				id: client.id,
 				nome: client.nome,
 				telefone: client.telefone,
 				pets: {

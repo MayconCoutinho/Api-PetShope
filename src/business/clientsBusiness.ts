@@ -1,6 +1,6 @@
 import { ClientDataBase } from "../dataBase/clientDataBase"
 import { ParamsError } from "../errors/ParamsError"
-import { ClientAndPetInput, ClientInput, ClienteDB, PetDB } from "../models/clientAndPet"
+import { ClientAndPetDB, ClientAndPetInput, ClientInput, ClienteDB, PetDB } from "../models/clientAndPet"
 import { Ok } from "../models/menssage"
 import { CheckingInputClient } from "../services/CheckingInputClient"
 import { CheckingInputPet } from "../services/CheckingInputPet"
@@ -58,7 +58,7 @@ export class ClientBusiness {
 		const petNameMod = petName.replace(petName[0], firstLetterPet)
 
 		const inputClientChecked: ClienteDB = {
-			id,
+			id: id,
 			nome: clientNameMod,
 			telefone,
 		}
@@ -71,7 +71,7 @@ export class ClientBusiness {
 			dono: inputClientChecked,
 		}
 
-		const inputClientAndPetOK: ClientAndPetInput = {
+		const inputClientAndPetOK: ClientAndPetDB = {
 			client: inputClientChecked,
 			pet: inputPetChecked,
 		}
